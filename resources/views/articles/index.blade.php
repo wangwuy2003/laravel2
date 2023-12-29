@@ -20,10 +20,14 @@
                 <td>{{ $article->title }}</td>
                 <td>{{ $article->content }}</td>
                 <td>
-                    <a href="" class="btn btn-primary">Edit</a>
+                    <a href="{{ route('articles.edit', $article) }}" class="btn btn-primary">Edit</a>
                 </td>
                 <td>
-                    <a href="" class="btn btn-danger">Delete</a>
+                    <form action="{{ route('articles.destroy', $article) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
                 </td>
             </tr>
         @endforeach
